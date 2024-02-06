@@ -24,7 +24,6 @@
 
 - https://en.wikipedia.org/wiki/Network_socket
 - https://docs.oracle.com/javase/tutorial/networking/sockets/
-- definition.html#:~:text=A%20socket%20is%20one%20endpoint,address%20and%20a%20port%20number.
 - https://www.youtube.com/watch?v=LtXEMwSG5-8
 - https://www.youtube.com/watch?v=mStnzIEprH8
 
