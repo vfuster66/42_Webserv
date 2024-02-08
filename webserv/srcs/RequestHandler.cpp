@@ -11,7 +11,7 @@ void RequestHandler::parseRequestLine(const std::string& line, HttpRequest& requ
 void RequestHandler::parseHeaders(std::istringstream& stream, HttpRequest& request) {
     std::string line;
     while (std::getline(stream, line) && line != "\r") {
-        std::string::size_type delimiterPos = line.find(": "); // Utilisation de std::string::size_type au lieu de auto
+        std::string::size_type delimiterPos = line.find(": ");
         if (delimiterPos != std::string::npos) {
             std::string key = line.substr(0, delimiterPos);
             std::string value = line.substr(delimiterPos + 2);
