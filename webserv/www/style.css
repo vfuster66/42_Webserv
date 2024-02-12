@@ -1,0 +1,277 @@
+/* General */
+@font-face {
+    font-family: 'Anaktoria';
+    src: url('Anaktoria.otf') format('opentype');
+    font-family: 'Amsterdam';
+    src: url('AmsterdamThree.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Anaktoria', sans-serif; /* Default font */
+    background: radial-gradient(circle at 50% 50%, #89b9c6, #415772);
+}
+
+/* Header */
+header {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    padding: 30px;
+    font-family: 'Amsterdam', sans-serif;
+}
+
+h1 {
+    align-items: center;
+    text-align: center;
+    font-size: 80px;
+    color: #FFFFFF;
+}
+
+.p-header {
+  text-align: center;
+  font-family: 'Anaktoria', sans-serif;
+  font-size: 25px;
+  color: #FFFFFF;
+}
+
+.navbar {
+    bottom: 0; /* Aligné au bas du header */
+    left: 0; /* Aligné à gauche du header */
+    width: 100%; /* Largeur complète pour étendre la barre de navigation sur toute la largeur du header */
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px; /* Ajustez ceci selon la distance souhaitée du bas du header */
+}
+
+.nav-button {
+  text-decoration: none;
+  font-family: 'Anaktoria', sans-serif;
+  background-color: #362C5D;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.nav-button:hover {
+    background-color: #7995ae;
+    color: #232e54;
+}
+
+/* Section: La femme du mois */
+.femme-du-mois {
+    display: flex;
+  }
+  
+  .left-block {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: #FFFFFF;
+  }
+  
+  .left-block h2 {
+    position: absolute;
+    bottom: 40%; /* Ajustez cette valeur pour déplacer le titre vers le haut ou vers le bas */
+    left: 10%; /* Ajustez cette valeur pour déplacer le titre vers la gauche ou la droite */
+    margin: 0;
+    font-size: 30px;
+}
+  
+.left-block img {
+  max-width: 70%; /* Adaptation de l'image à la largeur du conteneur */
+  height: auto; /* Maintien du rapport hauteur/largeur */
+  margin: 50px auto; /* Espacement supérieur et inférieur de 50px et centrage horizontal */
+  display: block; /* Pour permettre le centrage avec margin auto */
+}
+  
+.right-block {
+  flex-basis: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrage vertical */
+  background-color: #FFFFFF;
+}
+
+.right-block h1 {
+  position: absolute;
+  bottom: 35%;
+  left: 55%;
+  color: #232e54;
+  margin-bottom: 30px; /* Espacement entre le titre et le texte */
+  font-size: 3em; /* Taille de la police pour le titre */
+}
+  
+.right-block p {
+  color: #232e54;
+  margin-bottom: 5px; /* Espacement entre le texte et le lien */
+  font-size: 22px; /* Taille de la police pour le texte */
+  margin: 80px;
+  }
+  
+.right-block .more-link {
+  position: absolute;
+  color: #232e54;
+  text-decoration: underline;
+  cursor: pointer; /* Style du curseur pour indiquer un lien cliquable */
+  left: 56%;
+  bottom: 5%;
+  }
+
+
+/* Section: Actualites */
+.actualites-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.actualites-title {
+  font-size: 3em;
+  color: #FFFFFF;
+  margin-bottom: 50px;
+}
+
+.actualites-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.actualite-item {
+  flex-basis: 30%;
+  margin: 0 10px;
+  position: relative;
+}
+
+.actualite-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.actualite-item h2 {
+  background-color: #514b69; /* Fond sombre pour le texte */
+  color: #FFFFFF; /* Texte blanc */
+  padding: 20px;
+  margin-top: -10px; /* Superpose le titre sur l'image */
+}
+
+.event-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .actualites-content {
+      flex-direction: column;
+  }
+
+  .actualite-item {
+      flex-basis: 100%;
+      margin-bottom: 20px;
+  }
+}
+
+
+/* Section: Rejoignez-nous! */
+.join-us-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  color: #FFFFFF;
+}
+
+.join-us-left, .join-us-right {
+  flex-basis: 50%;
+}
+
+.join-us-left h1 {
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  font-size: 3em;
+}
+
+.join-us-left p {
+  font-size: 22px;
+  padding: 50px;
+}
+
+.join-us-right .join-us-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre les champs du formulaire verticalement */
+  width: 80%; /* Assure que le formulaire prend toute la largeur du conteneur */
+  margin: 50px;
+}
+
+.form-field {
+  position: relative;
+  margin-bottom: 40px;
+  width: 100%; /* Les champs du formulaire prennent la largeur totale du .join-us-form */
+}
+
+.form-field input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.form-field label {
+  width: 20%;
+  position: absolute;
+  left: 0; /* Alignement avec le bord gauche du champ de saisie */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #362C5D;
+  color: #FFFFFF;
+  padding: 10px 20px; /* Ajuste le rembourrage pour correspondre à l'input */
+  border-radius: 20px;
+  pointer-events: none; /* Allows click to pass through to the input */
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Empêche le texte de passer à la ligne suivante */
+}
+
+.form-field input:focus + label,
+.form-field input:not(:placeholder-shown) + label {
+  top: -20px; /* Ajustez la position pour que le label ne chevauche pas l'input */
+  left: 15px; /* Ajustement pour la position du label lorsqu'il est en haut */
+  font-size: 14px; /* Réduit la taille de la police quand le label est en haut */
+  padding: 5px 15px; /* Ajuste le rembourrage pour la taille réduite de la police */
+}
+
+.submit-button {
+  background-color: #362C5D;
+  color: #FFFFFF;
+  padding: 15px 30px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Anaktoria', sans-serif;
+  font-size: 18px;
+  width: 50%; /* Réduit la largeur du bouton Soumettre */
+  margin-top: 20px; /* Ajoute une marge au-dessus du bouton Soumettre */
+}
