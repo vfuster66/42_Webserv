@@ -30,6 +30,7 @@
 ## Sources Nginx
 
 - https://fr.wikipedia.org/wiki/NGINX
+- https://doc.ubuntu-fr.org/nginx
 
 ## Sources CGI
 
