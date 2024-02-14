@@ -161,6 +161,3 @@ bool ConfigParser::getBool(const std::string& key) const
     }
 }
 
-    return str.substr(first, (last - first + 1));
-}
-
