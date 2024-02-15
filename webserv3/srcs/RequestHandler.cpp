@@ -137,13 +137,20 @@ HttpResponse RequestHandler::handleRequest(const HttpRequest& request)
 
 std::string RequestHandler::determineMimeType(const std::string& filePath)
 {
-    // Simple MIME type determination based on file extension
-    // This is a very basic implementation and should be extended based on actual requirements
     if (filePath.find(".html") != std::string::npos) return "text/html";
     if (filePath.find(".css") != std::string::npos) return "text/css";
     if (filePath.find(".js") != std::string::npos) return "application/javascript";
     if (filePath.find(".png") != std::string::npos) return "image/png";
     if (filePath.find(".jpg") != std::string::npos || filePath.find(".jpeg") != std::string::npos) return "image/jpeg";
-    // Add more MIME types as needed
+    if (filePath.find(".gif") != std::string::npos) return "image/gif";
+    if (filePath.find(".svg") != std::string::npos) return "image/svg+xml";
+    if (filePath.find(".mp4") != std::string::npos) return "video/mp4";
+    if (filePath.find(".webm") != std::string::npos) return "video/webm";
+    if (filePath.find(".mp3") != std::string::npos) return "audio/mpeg";
+    if (filePath.find(".wav") != std::string::npos) return "audio/wav";
+    if (filePath.find(".pdf") != std::string::npos) return "application/pdf";
+    if (filePath.find(".docx") != std::string::npos) return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+    if (filePath.find(".json") != std::string::npos) return "application/json";
+    if (filePath.find(".xml") != std::string::npos) return "application/xml";
     return "text/plain";
 }
