@@ -9,20 +9,22 @@ OBJ_DIR = objs
 OBJS = $(addprefix $(OBJ_DIR)/,$(notdir $(OBJ)))
 INCLUDE = -I includes
 
-# Création du dossier objs
-$(shell mkdir -p $(OBJ_DIR))
-
 # Règle principale
 all: $(EXEC)
+
+# Correction: Ajoutez une règle pour créer le dossier objs avant la compilation
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 # Compilation
 $(EXEC): $(OBJS)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-$(OBJ_DIR)/%.o: %.cpp
+# Assurez-vous que la création du dossier objs est une dépendance pour la compilation des objets
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE)
 
-$(OBJ_DIR)/%.o: srcs/%.cpp
+$(OBJ_DIR)/%.o: srcs/%.cpp | $(OBJ_DIR)
 	$(CC) -o $@ -c $< $(CFLAGS) $(INCLUDE)
 
 # Nettoyage
@@ -31,8 +33,10 @@ clean:
 
 # Suppression de l'exécutable et du dossier objs
 fclean: clean
-	rm -rf $(EXEC)
-	rm -rf $(OBJ_DIR)
+	rm -rf $(EXEC) $(OBJ_DIR)
+
+# Pour recompiler
+re: fclean all
 
 # Pour recompiler
 re: fclean all
