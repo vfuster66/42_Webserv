@@ -38,7 +38,7 @@ class RequestHandler
 private:
     void parseRequestLine(const std::string& line, HttpRequest& request);
     void parseHeaders(std::istringstream& stream, HttpRequest& request);
-    void RequestHandler::parseBody(std::istringstream& stream, HttpRequest& request);
+    void parseBody(std::istringstream& stream, HttpRequest& request);
     std::string determineMimeType(const std::string& filePath);
 
 public:
