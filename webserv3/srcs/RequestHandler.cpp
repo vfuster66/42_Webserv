@@ -25,6 +25,14 @@ void RequestHandler::parseHeaders(std::istringstream& stream, HttpRequest& reque
     }
 }
 
+void RequestHandler::parseBody(std::istringstream& stream, HttpRequest& request) {
+    if (request.headers.find("Content-Length") != request.headers.end()) {
+        std::stringstream bodyStream;
+        bodyStream << stream.rdbuf();
+        request.body = bodyStream.str();
+    }
+}
+
 HttpRequest RequestHandler::parseRequest(const std::string& requestText)
 {
     HttpRequest request;
@@ -38,7 +46,8 @@ HttpRequest RequestHandler::parseRequest(const std::string& requestText)
     // Parse headers
     parseHeaders(stream, request);
 
-    // Optional: Parse body if needed
+    // Parse body
+    parseBody(stream, request);
 
     return request;
 }
