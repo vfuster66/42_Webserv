@@ -1,7 +1,4 @@
 #include "RequestHandler.hpp"
-#include <sstream>
-#include <iostream>
-
 
 void RequestHandler::parseRequestLine(const std::string& line, HttpRequest& request)
 {
