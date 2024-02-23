@@ -16,7 +16,7 @@
 class CgiHandler {
 public:
     // Constructeurs et destructeur
-    CgiHandler(const std::string& scriptPath, const std::map<std::string, std::string>& cgiEnv, const std::string& handlerPath);
+    CgiHandler(const std::string& scriptPath, const std::map<std::string, std::string>& cgiEnv);
     CgiHandler(const CgiHandler& other);
     ~CgiHandler();
 
@@ -31,11 +31,9 @@ private:
     // Attributs
     std::string scriptPath;
     std::map<std::string, std::string> cgiEnv;
-    std::string handlerPath;
 
     // Méthodes privées
     void setEnvironmentVariables();
 };
 
 #endif
-
