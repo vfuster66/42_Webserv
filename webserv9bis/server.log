@@ -1,0 +1,346 @@
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:9] ConfigParser instance created for file: config/serverInit.ini[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/Server.cpp:5] Server constructor -> Initialisation du serveur avec le fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:24] parse -> Tentative d'ouverture du fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:44] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:80] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : host: localhost;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : port: 3000;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : server_name: monpremiersite.com www.monpremiersite.com;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 2m;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:105] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:219] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: /: /var/www/monpremiersite index.html index.htm GET POST;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:254] parseLocationBlock -> Chemin normal détecté: /:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: /images/: /var/www/monpremiersite autoindex on;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:254] parseLocationBlock -> Chemin normal détecté: /images/:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.cgi$: cgi /usr/lib/cgi-bin/;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:252] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: \.cgi$:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monpremiersite/uploads POST;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:254] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite/uploads[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:236] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:268] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:110] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:114] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:126] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:52] parse -> Fin de l'analyse du bloc 'server' #1.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:44] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:80] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : host: 127.0.0.1;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : port: 4000;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : server_name: monsecondsite.com www.monsecondsite.com;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : handelType: cgi:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 1000000;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:139] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:41:42][WARNING][srcs/ConfigParser.cpp:213] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:105] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:219] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: /assets/: /var/www/monsecondsite autoindex off;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:254] parseLocationBlock -> Chemin normal détecté: /assets/:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.php$: cgi /usr/lib/cgi-bin/php5;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:252] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: \.php$:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:242] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monsecondsite/uploads POST;[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:254] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:290] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite/uploads[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:236] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:268] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:110] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:114] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:126] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:52] parse -> Fin de l'analyse du bloc 'server' #2.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:70] parse -> Nombre total de blocs 'server' analysés : 2[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:74] parse -> Analyse du fichier de configuration terminée.[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:323] ConfigParser::get -> Accès à la configuration pour 'port': -2023972864[0m
+[32m[2024-02-23 13:41:42][INFO][srcs/ConfigParser.cpp:316] ConfigureParser::get -> Acces a la configuration pour 'handlerType' : [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:9] ConfigParser instance created for file: config/serverInit.ini[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/Server.cpp:5] Server constructor -> Initialisation du serveur avec le fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:37] parse -> Tentative d'ouverture du fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:57] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:93] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : host: localhost;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : port: 3000;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : server_name: monpremiersite.com www.monpremiersite.com;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 2m;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:118] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:232] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: /: /var/www/monpremiersite index.html index.htm GET POST;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:267] parseLocationBlock -> Chemin normal détecté: /:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: /images/: /var/www/monpremiersite autoindex on;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:267] parseLocationBlock -> Chemin normal détecté: /images/:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.cgi$: cgi /usr/lib/cgi-bin/;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:265] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: \.cgi$:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monpremiersite/uploads POST;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:267] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite/uploads[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:249] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:281] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:123] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:127] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:139] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:65] parse -> Fin de l'analyse du bloc 'server' #1.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:57] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:93] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : host: 127.0.0.1;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : port: 4000;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : server_name: monsecondsite.com www.monsecondsite.com;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : handelType: cgi:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 1000000;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:46:50][WARNING][srcs/ConfigParser.cpp:226] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:118] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:232] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: /assets/: /var/www/monsecondsite autoindex off;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:267] parseLocationBlock -> Chemin normal détecté: /assets/:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.php$: cgi /usr/lib/cgi-bin/php5;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:265] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: \.php$:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monsecondsite/uploads POST;[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:267] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:303] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite/uploads[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:275] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:249] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:281] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:123] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:127] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:139] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:65] parse -> Fin de l'analyse du bloc 'server' #2.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:83] parse -> Nombre total de blocs 'server' analysés : 2[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:87] parse -> Analyse du fichier de configuration terminée.[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:336] ConfigParser::get -> Accès à la configuration pour 'port': -1697734656[0m
+[32m[2024-02-23 13:46:50][INFO][srcs/ConfigParser.cpp:329] ConfigureParser::get -> Acces a la configuration pour 'handlerType' : [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:9] ConfigParser instance created for file: config/serverInit.ini[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/Server.cpp:5] Server constructor -> Initialisation du serveur avec le fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:37] parse -> Tentative d'ouverture du fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:57] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:93] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : host: localhost;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : port: 3000;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : server_name: monpremiersite.com www.monpremiersite.com;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 2m;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:118] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:227] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: /: /var/www/monpremiersite index.html index.htm GET POST;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Chemin normal détecté: /:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: /images/: /var/www/monpremiersite autoindex on;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Chemin normal détecté: /images/:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.cgi$: cgi /usr/lib/cgi-bin/;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:260] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: \.cgi$:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monpremiersite/uploads POST;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite/uploads[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:244] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:276] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:123] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:127] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:139] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:65] parse -> Fin de l'analyse du bloc 'server' #1.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:57] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:93] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : host: 127.0.0.1;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : port: 4000;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : server_name: monsecondsite.com www.monsecondsite.com;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:132] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 1000000;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:152] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 13:49:31][WARNING][srcs/ConfigParser.cpp:221] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:118] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:227] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: /assets/: /var/www/monsecondsite autoindex off;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Chemin normal détecté: /assets/:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.php$: cgi /usr/lib/cgi-bin/php5;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:260] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: \.php$:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:250] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monsecondsite/uploads POST;[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:262] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:298] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite/uploads[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:270] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:244] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:276] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:123] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:127] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:139] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:65] parse -> Fin de l'analyse du bloc 'server' #2.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:83] parse -> Nombre total de blocs 'server' analysés : 2[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:87] parse -> Analyse du fichier de configuration terminée.[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:325] ConfigParser::get -> Accès à la configuration pour 'port': -1850761216[0m
+[32m[2024-02-23 13:49:31][INFO][srcs/ConfigParser.cpp:325] ConfigParser::get -> Accès à la configuration pour 'port': -1850761216[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:9] ConfigParser instance created for file: config/serverInit.ini[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/Server.cpp:5] Server constructor -> Initialisation du serveur avec le fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:38] parse -> Tentative d'ouverture du fichier de configuration : config/serverInit.ini[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:58] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:94] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : host: localhost;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : port: 3000;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : server_name: monpremiersite.com www.monpremiersite.com;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 2m;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:228] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: /: /var/www/monpremiersite index.html index.htm GET POST;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:257] parseLocationBlock -> Chemin normal détecté: /:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: /images/: /var/www/monpremiersite autoindex on;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:257] parseLocationBlock -> Chemin normal détecté: /images/:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.cgi$: cgi /usr/lib/cgi-bin/;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: \.cgi$:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monpremiersite/uploads POST;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:257] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: /var/www/monpremiersite/uploads[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:241] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:269] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:124] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:128] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:140] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:66] parse -> Fin de l'analyse du bloc 'server' #1.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:58] parse -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:94] parseServerBlock -> Début de l'analyse d'un bloc 'server'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : host: 127.0.0.1;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : port: 4000;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : server_name: monsecondsite.com www.monsecondsite.com;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : error_page: 404 /404.html;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:133] parseServerBlock -> Analyse de la configuration du serveur : client_max_body_size: 1000000;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:153] parseKeyValue -> Clé traitée: [0m
+[33m[2024-02-23 16:19:20][WARNING][srcs/ConfigParser.cpp:222] parseKeyValue -> Clé non reconnue ou non prise en charge: [0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:119] parseServerBlock -> Début de l'analyse d'un bloc 'location' #1.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:228] parseLocationBlock -> Début de l'analyse d'un bloc 'location'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: /assets/: /var/www/monsecondsite autoindex off;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:257] parseLocationBlock -> Chemin normal détecté: /assets/:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: ~ \.php$: cgi /usr/lib/cgi-bin/php5;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:255] parseLocationBlock -> Chemin avec expression régulière détecté: ~[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: \.php$:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:246] parseLocationBlock -> Traitement d'une nouvelle règle de location: /upload/: /var/www/monsecondsite/uploads POST;[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:257] parseLocationBlock -> Chemin normal détecté: /upload/:[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:289] parseLocationBlock -> Racine définie pour la location: /var/www/monsecondsite/uploads[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:263] parseLocationBlock -> Configuration de location ajoutée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:241] parseLocationBlock -> Fin du bloc 'location' détectée avec '>'.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:269] parseLocationBlock -> Analyse du bloc 'location' terminée avec succès.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:124] parseServerBlock -> Fin de l'analyse du bloc 'location' #1.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:128] parseServerBlock -> Fin du bloc 'server' détectée.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:140] parseServerBlock -> Fin de l'analyse du bloc 'server'. 1 blocs 'location' traités.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:66] parse -> Fin de l'analyse du bloc 'server' #2.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:84] parse -> Nombre total de blocs 'server' analysés : 2[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:88] parse -> Analyse du fichier de configuration terminée.[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:316] ConfigParser::get -> Accès à la configuration pour 'port': 0[0m
+[32m[2024-02-23 16:19:20][INFO][srcs/ConfigParser.cpp:316] ConfigParser::get -> Accès à la configuration pour 'port': 0[0m
