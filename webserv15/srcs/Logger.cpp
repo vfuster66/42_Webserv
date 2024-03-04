@@ -50,44 +50,6 @@ void Logger::configure(const std::string& filename, Level fileLogLevel, Level co
     pthread_mutex_unlock(&mutex);
 }
 
-/*void Logger::log(const std::string& message, Level level, const char* file, int line)
-{
-    pthread_mutex_lock(&mutex);
-
-    std::ostringstream logMessage;
-    const char* color = RESET;
-
-    switch (level)
-    {
-        case INFO:
-            color = GREEN; break;
-        case WARNING:
-            color = YELLOW; break;
-        case ERROR:
-            color = RED; break;
-    }
-
-    logMessage << color << "[" << currentTime() << "][" << levelToString(level) << "]";
-
-    if (file)
-    {
-        logMessage << "[" << file << ":" << line << "]";
-    }
-    logMessage << " " << message << RESET;
-
-    if (fileStream.is_open() && level >= fileLogLevel)
-    {
-        fileStream << logMessage.str() << std::endl;
-        fileStream.flush();
-    }
-
-    if (level >= consoleLogLevel)
-    {
-    }
-
-    pthread_mutex_unlock(&mutex);
-}*/
-
 void Logger::log(const std::string& message, Level level, const char* file, int line, const char* function)
 {
     pthread_mutex_lock(&mutex);
@@ -95,15 +57,16 @@ void Logger::log(const std::string& message, Level level, const char* file, int 
     std::ostringstream logMessage;
     const char* color = RESET;
 
-    // Choix de la couleur en fonction du niveau de log
     switch (level)
     {
-        case INFO: color = GREEN; break;
-        case WARNING: color = YELLOW; break;
-        case ERROR: color = RED; break;
+        case INFO: color = GREEN;
+        break;
+        case WARNING: color = YELLOW;
+        break;
+        case ERROR: color = RED;
+        break;
     }
 
-    // Construction du message de log
     logMessage << color << "[" << currentTime() << "][" << levelToString(level) << "]";
 
     if (file)
@@ -111,7 +74,6 @@ void Logger::log(const std::string& message, Level level, const char* file, int 
         logMessage << "[" << file << ":" << line << "]";
     }
 
-    // Nouveau : Ajout du nom de la fonction au message
     if (function)
     {
         logMessage << "[" << function << "]";
@@ -119,7 +81,6 @@ void Logger::log(const std::string& message, Level level, const char* file, int 
 
     logMessage << " " << message << RESET;
 
-    // Écriture dans le fichier de log et sur la console si nécessaire
     if (fileStream.is_open() && level >= fileLogLevel)
     {
         fileStream << logMessage.str() << std::endl;

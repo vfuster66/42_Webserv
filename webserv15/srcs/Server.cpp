@@ -5,7 +5,7 @@ bool Server::isRunning = true;
 Server::Server(const std::string& configFilePath, const std::string& logFilePath, Logger::Level logLevel)
     : config(configFilePath, logFilePath, logLevel)
 {
-    LOG_INFO("Server constructor -> Initialisation du serveur avec le fichier de configuration : " + configFilePath);
+    LOG_INFO("Initialisation du serveur avec le fichier de configuration : " + configFilePath);
     
     config.parse();
     
@@ -25,7 +25,7 @@ Server::~Server()
     }
     server_fds.clear();
     
-    LOG_INFO("Server destructor -> Sockets serveur fermés avec succès.");
+    LOG_INFO("Sockets serveur fermés avec succès.");
 }
 
 void Server::shutdownServer(const std::string& reason)
@@ -54,12 +54,11 @@ void Server::setupServerSockets()
         if (fd == -1)
         {
             std::ostringstream oss;
-            oss << "setupServerSockets -> Échec de la création du socket pour le serveur à l'index " << i;
+            oss << "Échec de la création du socket pour le serveur à l'index " << i;
             LOG_ERROR(oss.str());
             continue; 
         }
 
-        // Définition de l'option SO_REUSEADDR sur le socket
         int opt = 1;
         if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0) {
             std::ostringstream oss;
@@ -78,13 +77,14 @@ void Server::setupServerSockets()
         if (bind(fd, (struct sockaddr *)&serverAddr, sizeof(serverAddr)) < 0)
         {
             std::ostringstream oss;
-            oss << "setupServerSockets -> Échec du bind sur le port: " << servers[i].port;
+            oss << "Échec du bind sur le port: " << servers[i].port;
             LOG_ERROR(oss.str());
             close(fd);
             continue;
         }
 
-        if (listen(fd, 100) < 0) {
+        if (listen(fd, 100) < 0)
+        {
             std::ostringstream oss;
             oss << "Échec de l'écoute sur le port: " << servers[i].port;
             LOG_ERROR(oss.str());
@@ -94,7 +94,7 @@ void Server::setupServerSockets()
         server_fds.push_back(fd);
 
         std::ostringstream oss;
-        oss << "setupServerSockets -> Socket serveur configuré et en écoute sur le port " << servers[i].port;
+        oss << "Socket serveur configuré et en écoute sur le port " << servers[i].port;
         LOG_INFO(oss.str());
     }
 }
@@ -110,76 +110,94 @@ void Server::safeWrite(int fd, const std::string& data)
     }
 }
 
-void Server::start() {
+void Server::start()
+{
     fd_set master_set, read_fds;
     int max_fd = 0;
 
     FD_ZERO(&master_set);
-    for (std::vector<int>::iterator it = server_fds.begin(); it != server_fds.end(); ++it) {
+    for (std::vector<int>::iterator it = server_fds.begin(); it != server_fds.end(); ++it)
+    {
         int fd = *it;
         FD_SET(fd, &master_set);
-        if (fd > max_fd) {
+        if (fd > max_fd)
+        {
             max_fd = fd;
         }
     }
 
-    LOG_INFO("start -> Serveur démarré et en attente de connexions sur plusieurs ports...");
+    LOG_INFO("Serveur démarré et en attente de connexions sur plusieurs ports...");
 
-    while (isRunning) {
+    while (isRunning)
+    {
         read_fds = master_set;
-        if (select(max_fd + 1, &read_fds, NULL, NULL, NULL) < 0) {
-            LOG_ERROR("start -> Erreur lors de l'exécution de select");
+        if (select(max_fd + 1, &read_fds, NULL, NULL, NULL) < 0)
+        {
+            LOG_ERROR("Erreur lors de l'exécution de select");
             exit(EXIT_FAILURE);
         }
 
-        for (int i = 0; i <= max_fd; i++) {
-            if (FD_ISSET(i, &read_fds)) {
-                if (std::find(server_fds.begin(), server_fds.end(), i) != server_fds.end()) {
+        for (int i = 0; i <= max_fd; i++)
+        {
+            if (FD_ISSET(i, &read_fds))
+            {
+                if (std::find(server_fds.begin(), server_fds.end(), i) != server_fds.end())
+                {
                     sockaddr_in client_addr;
                     socklen_t client_len = sizeof(client_addr);
                     int client_fd = accept(i, (sockaddr*)&client_addr, &client_len);
-                    if (client_fd < 0) {
-                        LOG_ERROR("start -> Erreur lors de l'acceptation d'une nouvelle connexion");
-                    } else {
+                    if (client_fd < 0)
+                    {
+                        LOG_ERROR("Erreur lors de l'acceptation d'une nouvelle connexion");
+                    }
+                    else
+                    {
                         FD_SET(client_fd, &master_set);
-                        if (client_fd > max_fd) {
+                        if (client_fd > max_fd)
+                        {
                             max_fd = client_fd;
                         }
                         std::ostringstream oss;
-                        oss << "start -> Nouvelle connexion depuis " << inet_ntoa(client_addr.sin_addr);
+                        oss << "Nouvelle connexion depuis " << inet_ntoa(client_addr.sin_addr);
                         LOG_INFO(oss.str());
                     }
-                } else {
+                }
+                else
+                {
                     char buffer[1024] = {0};
                     ssize_t bytes_read = read(i, buffer, sizeof(buffer) - 1);
-                    if (bytes_read <= 0) {
+                    if (bytes_read <= 0)
+                    {
                         close(i);
                         FD_CLR(i, &master_set);
-                    } else {
-                        // Correction: Extraction et parsing correct des cookies
+                    }
+                    else
+                    {
                         Cookies cookies;
                         std::string requestStr(buffer, bytes_read);
                         cookies.extractCookiesFromRequest(requestStr); 
                         std::string sessionId = cookies.getValue("sessionId");
                         SessionManager sessionManager;
-                        if (!sessionId.empty() && sessionManager.validateSession(sessionId)) {
-                            // Session valide
-                        } else {
+                        if (!sessionId.empty() && sessionManager.validateSession(sessionId))
+                        {
+                        }
+                        else
+                        {
                             sessionId = sessionManager.createSession();
-                            cookies.setValue("sessionId", sessionId); // Mise à jour ou ajout du cookie sessionId
+                            cookies.setValue("sessionId", sessionId);
                         }
 
                         HttpRequest httpRequest = requestHandler.parseRequest(requestStr);
                         HttpResponse httpResponse = requestHandler.handleRequest(httpRequest);
 
-                        // Ajout du cookie de session mis à jour dans la réponse
                         httpResponse.headers["Set-Cookie"] = cookies.toString();
 
                         std::string responseText = Response::buildHttpResponse(httpResponse);
                         safeWrite(i, responseText);
 
                         std::string connectionHeader = httpRequest.getHeader("Connection");
-                        if (connectionHeader != "keep-alive") {
+                        if (connectionHeader != "keep-alive")
+                        {
                             close(i);
                             FD_CLR(i, &master_set);
                         }

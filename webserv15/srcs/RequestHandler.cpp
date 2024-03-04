@@ -13,48 +13,47 @@ void RequestHandler::setServerPort(int port)
 {
     current_port = port;
     std::ostringstream logMessage;
-    logMessage << "setServerPort -> Port du serveur mis à jour : " << port;
+    logMessage << "Port du serveur mis à jour : " << port;
     LOG_INFO(logMessage.str());
 }
 
 int RequestHandler::extractPortFromHostHeader(const std::string& hostHeader)
 {
     size_t colonPos = hostHeader.find_last_of(':');
-    if (colonPos != std::string::npos){
+    if (colonPos != std::string::npos)
+    {
         std::istringstream portStrStream(hostHeader.substr(colonPos + 1));
         int port;
         portStrStream >> port;
-        // Add log for extracting port from host header
         std::stringstream ss;
         ss << port;
-        LOG_INFO("extractPortFromHostHeader -> Port extracted from host header: " + ss.str());
+        LOG_INFO("Port extracted from host header: " + ss.str());
         return port;
     }
-    // Add log for default port being used
-    LOG_INFO("extractPortFromHostHeader -> Default port 80 used");
+    LOG_INFO("Default port 80 used");
     return 80;
 }
 
-ServerConfig RequestHandler::getServerConfigForPort(int port) {
-    for (std::vector<ServerConfig>::iterator it = serverConfigs.begin(); it != serverConfigs.end(); ++it) {
-        if (it->port == port) {
-            // Add log for finding server config for port
+ServerConfig RequestHandler::getServerConfigForPort(int port)
+{
+    for (std::vector<ServerConfig>::iterator it = serverConfigs.begin(); it != serverConfigs.end(); ++it)
+    {
+        if (it->port == port)
+        {
             std::stringstream ss;
             ss << port;
-            std::string logMessage = "getServerConfigForPort -> Server config found for port: " + ss.str();
+            std::string logMessage = "Server config found for port: " + ss.str();
             LOG_INFO(logMessage.c_str());
             return *it;
         }
     }
-    
-    // Add log for server config not found
+
     std::stringstream ss;
     ss << port;
-    std::string logErrorMessage = "getServerConfigForPort -> Server config not found for port: " + ss.str();
+    std::string logErrorMessage = "Server config not found for port: " + ss.str();
     LOG_ERROR(logErrorMessage.c_str());
     
-    // Throw exception
-    throw std::runtime_error("getServerConfigForPort -> Server config not found for port: " + ss.str());
+    throw std::runtime_error("Server config not found for port: " + ss.str());
 }
 
 
@@ -62,21 +61,21 @@ bool RequestHandler::isValidRequest(const HttpRequest& request)
 {
     if(request.method != "GET" && request.method != "POST" && request.method != "DELETE")
     {
-        LOG_ERROR("isValidRequest -> RequestHandler::isValidRequest - Méthode HTTP non supportée: " + request.method);
+        LOG_ERROR("Méthode HTTP non supportée: " + request.method);
         return false;
     }
-    LOG_INFO("isValidRequest -> RequestHandler::isValidRequest - Requête valide avec la méthode: " + request.method);
+    LOG_INFO("Requête valide avec la méthode: " + request.method);
     return true;
 }
 
 
 HttpResponse RequestHandler::handleRequest(const HttpRequest& request)
 {
-    LOG_INFO("handleRequest -> handling request for URI: " + request.uri);
+    LOG_INFO("handling request for URI: " + request.uri);
 
     if (!isValidRequest(request)) {
         // Log invalid request
-        LOG_ERROR("handleRequest -> Invalid request received");
+        LOG_ERROR("Invalid request received");
         HttpResponse response;
         response.httpVersion = "HTTP/1.1";
         response.statusCode = 400;
@@ -87,26 +86,26 @@ HttpResponse RequestHandler::handleRequest(const HttpRequest& request)
 
     if (isCgiRequest(request)) {
         // Log CGI request
-        LOG_INFO("handleRequest -> CGI request detected");
+        LOG_INFO("CGI request detected");
         return handleCgiRequest(request);
     }
     else if (request.method == "GET") {
         // Log GET request
-        LOG_INFO("handleRequest -> GET request received");
+        LOG_INFO("GET request received");
         return handleGetRequest(request);
     }
     else if (request.method == "POST") {
         // Log POST request
-        LOG_INFO("handleRequest -> POST request received");
+        LOG_INFO("POST request received");
         return handlePostRequest(request);
     }
     else if (request.method == "DELETE") {
         // Log DELETE request
-        LOG_INFO("handleRequest -> DELETE request received");
+        LOG_INFO("DELETE request received");
         return handleDeleteRequest(request);
     }
     else {
-        LOG_ERROR("handleRequest -> Unsupported method: " + request.method);
+        LOG_ERROR("Unsupported method: " + request.method);
         HttpResponse response;
         response.httpVersion = "HTTP/1.1";
         response.statusCode = 405;
@@ -121,16 +120,19 @@ HttpResponse RequestHandler::handleRequest(const HttpRequest& request)
     }
 }
 
-std::string RequestHandler::getScriptPathFromUri(const std::string& uri) {
-    // Log URI received
+std::string RequestHandler::getScriptPathFromUri(const std::string& uri)
+{
     LOG_INFO("getScriptPathFromUri -> URI received: " + uri);
 
     std::string cgiBasePath = "/home/vfuster-/webserv4/www/cgi-bin/";
-    if (uri.find(cgiBasePath) != std::string::npos) {
-        LOG_INFO("getScriptPathFromUri -> Full CGI script path: " + uri);
+    if (uri.find(cgiBasePath) != std::string::npos)
+    {
+        LOG_INFO("Full CGI script path: " + uri);
         return uri;
-    } else {
-        LOG_ERROR("getScriptPathFromUri -> Error: URI path does not contain the expected base path for CGI scripts.");
+    }
+    else
+    {
+        LOG_ERROR("Error: URI path does not contain the expected base path for CGI scripts.");
     }
     return "";
 }
@@ -139,51 +141,52 @@ std::string RequestHandler::getScriptPathFromUri(const std::string& uri) {
 
 HttpResponse RequestHandler::handleCgiRequest(const HttpRequest& request)
 {
-    LOG_INFO("handleCgiRequest -> Début de la gestion de la requête CGI avec URI: " + request.uri);
+    LOG_INFO("Début de la gestion de la requête CGI avec URI: " + request.uri);
 
-    try {
+    try
+    {
         int port = extractPortFromHostHeader(request.headers.find("Host")->second);
         const ServerConfig& serverConfig = getServerConfigForPort(port);
 
         std::string scriptPath = getScriptPathFromUri(request.uri);
-        if (scriptPath.empty()) {
-            // Si le chemin vers le script est vide, cela signifie que le chemin d'URI ne commence pas par le chemin de base CGI attendu.
+        if (scriptPath.empty())
+        {
             return generateNotFoundResponse();
         }
 
         CgiHandler cgiHandler(scriptPath, request);
-        LOG_INFO("handleCgiRequest -> CgiHandler construit avec scriptPath: " + scriptPath);
+        LOG_INFO("CgiHandler construit avec scriptPath: " + scriptPath);
 
         HttpResponse response = cgiHandler.executeScript();
-        LOG_INFO("handleCgiRequest -> Script CGI exécuté, préparation de la réponse HTTP");
+        LOG_INFO("Script CGI exécuté, préparation de la réponse HTTP");
 
-        // Configuration supplémentaire de la réponse si nécessaire
         return response;
-    } catch (const std::exception& e) {
-        LOG_ERROR("handleCgiRequest -> Exception capturée lors de la gestion de la requête CGI: " + std::string(e.what()));
+    }
+    catch (const std::exception& e)
+    {
+        LOG_ERROR("Exception capturée lors de la gestion de la requête CGI: " + std::string(e.what()));
         return generateInternalServerErrorResponse();
     }
 }
 
-bool RequestHandler::isCgiRequest(const HttpRequest& request) {
-    // Log isCgiRequest called with URI
-    LOG_INFO("isCgiRequest -> isCgiRequest called with URI: " + request.uri);
+bool RequestHandler::isCgiRequest(const HttpRequest& request)
+{
+    LOG_INFO("isCgiRequest called with URI: " + request.uri);
 
-    // Example check based on file extension
     std::string uri = request.uri;
     size_t lastDotPos = uri.find_last_of(".");
-    if (lastDotPos != std::string::npos) {
+    if (lastDotPos != std::string::npos)
+    {
         std::string extension = uri.substr(lastDotPos);
-        // Log extracted extension
-        LOG_INFO("isCgiRequest -> Extension extracted: " + extension);
-        if (extension == ".cgi" || extension == ".pl" || extension == ".php" || extension == ".py") {
-            // Log request identified as CGI
-            LOG_INFO("isCgiRequest -> Request identified as CGI.");
+        LOG_INFO("Extension extracted: " + extension);
+        if (extension == ".cgi" || extension == ".pl" || extension == ".php" || extension == ".py")
+        {
+            LOG_INFO("Request identified as CGI.");
             return true;
         }
     }
-    // Log request not identified as CGI
-    LOG_INFO("isCgiRequest -> Request not identified as CGI.");
+
+    LOG_INFO("Request not identified as CGI.");
     return false;
 }
 
@@ -242,8 +245,6 @@ HttpResponse RequestHandler::handleGetRequest(const HttpRequest& request)
 
     return response;
 }
-
-
 
 HttpResponse RequestHandler::generateInternalServerErrorResponse()
 {
@@ -456,23 +457,23 @@ std::string urlDecode(const std::string& str)
 //parsing
 void RequestHandler::parseRequestLine(const std::string& line, HttpRequest& request)
 {
-    LOG_INFO("parseRequestLine -> Début de l'analyse de la ligne de requête");
+    LOG_INFO("Début de l'analyse de la ligne de requête");
 
     std::istringstream stream(line);
     stream >> request.method >> request.uri >> request.httpVersion;
 
     std::ostringstream logMessage;
-    logMessage << "parseRequestLine -> Méthode : " << request.method
+    logMessage << "Méthode : " << request.method
             << ", URI : " << request.uri
             << ", Version HTTP : " << request.httpVersion;
     LOG_INFO(logMessage.str());
 
-    LOG_INFO("parseRequestLine -> Fin de l'analyse de la ligne de requête");
+    LOG_INFO("pFin de l'analyse de la ligne de requête");
 }
 
 void RequestHandler::parseHeaders(std::istringstream& stream, HttpRequest& request)
 {
-    LOG_INFO("parseHeaders -> Début de l'analyse des en-têtes HTTP");
+    LOG_INFO("Début de l'analyse des en-têtes HTTP");
 
     std::string line;
     while (std::getline(stream, line) && line != "\r")
@@ -489,12 +490,12 @@ void RequestHandler::parseHeaders(std::istringstream& stream, HttpRequest& reque
             request.headers[key] = value;
 
             std::ostringstream logMessage;
-            logMessage << "parseHeaders -> En-tête trouvé : " << key << " : " << value;
+            logMessage << "En-tête trouvé : " << key << " : " << value;
             LOG_INFO(logMessage.str());
         }
     }
 
-    LOG_INFO("parseHeaders -> Fin de l'analyse des en-têtes HTTP");
+    LOG_INFO("Fin de l'analyse des en-têtes HTTP");
 }
 
 void RequestHandler::parseBody(HttpRequest& request)
@@ -529,23 +530,23 @@ void RequestHandler::parseBody(HttpRequest& request)
 
 HttpRequest RequestHandler::parseRequest(const std::string& requestText)
 {
-    LOG_INFO("parseRequest -> Début du parsing de la requête");
+    LOG_INFO("Début du parsing de la requête");
 
     HttpRequest request;
     std::istringstream stream(requestText);
     std::string requestLine;
     std::getline(stream, requestLine);
 
-    LOG_INFO("parseRequest -> Parsing de la ligne de requête");
+    LOG_INFO("Parsing de la ligne de requête");
     parseRequestLine(requestLine, request);
 
-    LOG_INFO("parseRequest -> Parsing des en-têtes");
+    LOG_INFO("Parsing des en-têtes");
     parseHeaders(stream, request);
 
-    LOG_INFO("parseRequest -> Parsing du corps");
+    LOG_INFO("Parsing du corps");
     parseBody(request);
 
-    LOG_INFO("parseRequest -> Parsing de la requête terminé");
+    LOG_INFO("Parsing de la requête terminé");
 
     return request;
 }
@@ -586,7 +587,7 @@ std::string RequestHandler::determineMimeType(const std::string& filePath)
     else if (filePath.find(".xml") != std::string::npos)
         mimeType = "application/xml";
 
-    LOG_INFO("determineMimeType -> Type MIME déterminé pour " + filePath + " : " + mimeType);
+    LOG_INFO("Type MIME déterminé pour " + filePath + " : " + mimeType);
     
     return mimeType;
 }
@@ -598,19 +599,19 @@ std::string RequestHandler::loadErrorPage(int statusCode)
     filePathStream << "www/errors/" << statusCode << ".html";
     std::string filePath = filePathStream.str();
 
-    LOG_INFO("loadErrorPage -> Tentative de chargement de la page d'erreur : " + filePath);
+    LOG_INFO("Tentative de chargement de la page d'erreur : " + filePath);
 
     std::ifstream file(filePath.c_str(), std::ios::in | std::ios::binary);
     if (file)
     {
         std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
         file.close();
-        LOG_INFO("loadErrorPage -> Page d'erreur chargée avec succès : " + filePath);
+        LOG_INFO("Page d'erreur chargée avec succès : " + filePath);
         return content;
     }
     else
     {
-        LOG_ERROR("loadErrorPage -> Échec du chargement de la page d'erreur, fichier non trouvé : " + filePath);
+        LOG_ERROR("Échec du chargement de la page d'erreur, fichier non trouvé : " + filePath);
         std::ostringstream errorMessage;
         errorMessage << "<html><body><h1>Error " << statusCode << "</h1></body></html>";
         return errorMessage.str();
@@ -627,22 +628,22 @@ bool RequestHandler::isMultipartFormData(const HttpRequest& request)
     if (it != request.headers.end())
     {
         contentType = it->second;
-        LOG_INFO("isMultipartFormData -> Content-Type trouvé : " + contentType);
+        LOG_INFO("Content-Type trouvé : " + contentType);
     }
     else
     {
-        LOG_WARNING("isMultipartFormData -> Aucun Content-Type trouvé dans les en-têtes de la requête.");
+        LOG_WARNING("Aucun Content-Type trouvé dans les en-têtes de la requête.");
     }
 
     bool isMultipart = contentType.find("multipart/form-data") != std::string::npos;
 
     if (isMultipart)
     {
-        LOG_INFO("isMultipartFormData -> La requête est de type multipart/form-data.");
+        LOG_INFO("La requête est de type multipart/form-data.");
     }
     else
     {
-        LOG_INFO("isMultipartFormData -> La requête n'est pas de type multipart/form-data.");
+        LOG_INFO("La requête n'est pas de type multipart/form-data.");
     }
 
     return isMultipart;
@@ -650,23 +651,23 @@ bool RequestHandler::isMultipartFormData(const HttpRequest& request)
 
 std::string RequestHandler::getBoundary(const std::string& contentType)
 {
-    LOG_INFO("getBoundary -> Début de getBoundary avec contentType: " + contentType);
+    LOG_INFO("Début de getBoundary avec contentType: " + contentType);
 
     std::string::size_type pos = contentType.find("boundary=");
     if (pos != std::string::npos)
     {
         std::string boundary = contentType.substr(pos + 9);
-        LOG_INFO("getBoundary -> Boundary trouvé: " + boundary);
+        LOG_INFO("Boundary trouvé: " + boundary);
         return boundary;
     }
 
-    LOG_WARNING("getBoundary -> Aucun boundary trouvé dans contentType");
+    LOG_WARNING("Aucun boundary trouvé dans contentType");
     return "";
 }
 
 void RequestHandler::parseMultipartFormData(const std::string& body, const std::string& boundary, std::vector<FilePart>& files)
 {
-    LOG_INFO("parseMultipartFormData -> Début de parseMultipartFormData");
+    LOG_INFO("Début de parseMultipartFormData");
 
     std::string delimiter = "--" + boundary;
     std::string endDelimiter = delimiter + "--";
@@ -684,30 +685,30 @@ void RequestHandler::parseMultipartFormData(const std::string& body, const std::
 
         if (!filePart.fileName.empty())
         {
-            LOG_INFO("parseMultipartFormData -> Fichier extrait: " + filePart.fileName);
+            LOG_INFO("Fichier extrait: " + filePart.fileName);
             files.push_back(filePart);
         }
 
         pos = endPos + delimiter.length();
     }
 
-    LOG_INFO("parseMultipartFormData -> Fin de parseMultipartFormData");
+    LOG_INFO("Fin de parseMultipartFormData");
 }
 
 void RequestHandler::saveFile(const std::string& content, const std::string& fileName)
 {
-    std::string filePath = "/home/vfuster-/42-Webserv/webserv4/uploads/" + fileName;
+    std::string filePath = "/home/vfuster-/webserv4/uploads/" + fileName;
 
     std::ofstream file(filePath.c_str(), std::ios::out | std::ios::binary);
     if (file.is_open())
     {
         file.write(content.c_str(), content.size());
         file.close();
-        LOG_INFO("saveFile -> Fichier sauvegardé avec succès : " + filePath);
+        LOG_INFO("Fichier sauvegardé avec succès : " + filePath);
     }
     else
     {
-        LOG_ERROR("saveFile -> Erreur lors de l'ouverture du fichier pour écriture : " + filePath);
+        LOG_ERROR("Erreur lors de l'ouverture du fichier pour écriture : " + filePath);
     }
 }
 
@@ -729,7 +730,7 @@ FilePart RequestHandler::extractFilePart(const std::string& part)
         if (line.empty())
         {
             contentStart = true;
-            LOG_INFO("extractFilePart -> Début du contenu du fichier détecté.");
+            LOG_INFO("Début du contenu du fichier détecté.");
             continue;
         }
 
@@ -738,7 +739,7 @@ FilePart RequestHandler::extractFilePart(const std::string& part)
             if (line.find("Content-Disposition:") != std::string::npos)
             {
                 contentDisposition = line;
-                LOG_INFO("extractFilePart -> Content-Disposition trouvé : " + line);
+                LOG_INFO("Content-Disposition trouvé : " + line);
                 std::size_t filenamePos = line.find("filename=\"");
                 if (filenamePos != std::string::npos)
                 {
@@ -747,7 +748,7 @@ FilePart RequestHandler::extractFilePart(const std::string& part)
                     if (filenameEnd != std::string::npos)
                     {
                         filePart.fileName = line.substr(filenamePos, filenameEnd - filenamePos);
-                        LOG_INFO("extractFilePart -> Nom du fichier extrait : " + filePart.fileName);
+                        LOG_INFO("Nom du fichier extrait : " + filePart.fileName);
                     }
                 }
             }
@@ -763,6 +764,6 @@ FilePart RequestHandler::extractFilePart(const std::string& part)
         filePart.fileContent.erase(filePart.fileContent.size() - 1);
     }
 
-    LOG_INFO("extractFilePart -> Extraction du fichier terminée. Nom du fichier : " + filePart.fileName);
+    LOG_INFO("Extraction du fichier terminée. Nom du fichier : " + filePart.fileName);
     return filePart;
 }

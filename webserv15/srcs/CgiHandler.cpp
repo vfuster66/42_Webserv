@@ -1,4 +1,4 @@
-#include "CgiHandler.hpp"
+#include "../includes/CgiHandler.hpp"
 
 CgiHandler::CgiHandler(const std::string& scriptPath, const HttpRequest& request)
 : scriptPath(scriptPath), request(request)
