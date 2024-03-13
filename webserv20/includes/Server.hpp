@@ -40,6 +40,7 @@ private:
     ConfigParser        config;
     RequestHandler      requestHandler;
     Response            response;
+    SessionManager      sessionManager;
 
     Server(const Server &other);
     Server &operator=(const Server &other);

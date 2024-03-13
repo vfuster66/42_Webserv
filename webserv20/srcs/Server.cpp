@@ -140,6 +140,9 @@ void Server::start()
 
     LOG_INFO("Serveur démarré et en attente de connexions sur plusieurs ports...");
 
+    std::time_t lastCleanupTime = std::time(0);
+    int cleanupInterval = 60;
+
     while (isRunning)
     {
         read_fds = master_set;
@@ -185,19 +188,41 @@ void Server::start()
                     }
                     else
                     {
+                        // Création de l'objet Cookies et extraction des cookies de la requête
                         Cookies cookies;
                         std::string requestStr(buffer, bytes_read);
-                        cookies.extractCookiesFromRequest(requestStr); 
+
+                        // Log avant extraction
+                        LOG_INFO("Extracting cookies from request: " + requestStr);
+
+                        cookies.extractCookiesFromRequest(requestStr);
+
+                        // Tentative de récupération du sessionId
                         std::string sessionId = cookies.getValue("sessionId");
-                        SessionManager sessionManager;
+
+                        // Log après tentative de récupération
+                        LOG_INFO("Retrieved sessionId from cookies: " + sessionId);
+
+                        // Validation et gestion de la session
                         if (!sessionId.empty() && sessionManager.validateSession(sessionId))
                         {
+                            LOG_INFO("Session valid. Updating last activity for sessionId: " + sessionId);
+                            sessionManager.updateLastActivity(sessionId);
                         }
                         else
                         {
+                            LOG_INFO("Session invalid or not found. Creating new session.");
                             sessionId = sessionManager.createSession();
-                            cookies.setValue("sessionId", sessionId);
+                            int cookieMaxAge = 3600;
+                            cookies.setValue("sessionId", sessionId, false, "/", cookieMaxAge);
+
+                            // Log après la création d'une nouvelle session
+                            std::ostringstream oss;
+                            oss << "New session created with sessionId: " << sessionId << ". Max Age: " << cookieMaxAge;
+                            LOG_INFO(oss.str());
+
                         }
+
 
                         HttpRequest httpRequest = requestHandler.parseRequest(requestStr);
                         HttpResponse httpResponse = requestHandler.handleRequest(httpRequest);
@@ -217,6 +242,12 @@ void Server::start()
                 }
             }
         }
+    }
+    std::time_t now = std::time(0);
+    if (now - lastCleanupTime > cleanupInterval)
+    {
+        sessionManager.cleanupExpiredSessions(3600);
+        lastCleanupTime = now;
     }
 }
 

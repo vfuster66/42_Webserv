@@ -69,3 +69,40 @@ Session& SessionManager::getSession(const std::string& sessionId)
     return it->second;
 }
 
+void SessionManager::updateLastActivity(const std::string& sessionId)
+{
+    std::map<std::string, Session>::iterator it = sessions.find(sessionId);
+    if (it != sessions.end())
+    {
+        it->second.lastActivity = std::time(0);
+
+        std::ostringstream oss;
+        oss << it->second.lastActivity;
+
+        LOG_INFO("Last activity time updated to: " + oss.str() + " for session ID: " + sessionId);
+    }
+    else
+    {
+        LOG_WARNING("Attempted to update last activity for non-existent session ID: " + sessionId);
+    }
+}
+
+
+
+void SessionManager::cleanupExpiredSessions(int expirationTimeInSeconds)
+{
+    std::time_t now = std::time(0);
+    for (std::map<std::string, Session>::iterator it = sessions.begin(); it != sessions.end(); )
+    {
+        if (now - it->second.lastActivity > expirationTimeInSeconds)
+        {
+            LOG_INFO("Cleaning up expired session: " + it->first);
+            sessions.erase(it++);
+        } 
+        else 
+        {
+            ++it;
+        }
+    }
+}
+

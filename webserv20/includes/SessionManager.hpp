@@ -19,6 +19,8 @@ public:
     bool validateSession(const std::string& sessionId);
     void endSession(const std::string& sessionId);
     Session& getSession(const std::string& sessionId);
+    void cleanupExpiredSessions(int expirationTimeInSeconds);
+    void updateLastActivity(const std::string& sessionId);
 
 private:
     std::map<std::string, Session>  sessions;

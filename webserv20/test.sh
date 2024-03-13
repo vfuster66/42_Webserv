@@ -111,7 +111,7 @@ test_download() {
 
     # Vérification de l'existence du fichier téléchargé
     if [ -f "/tmp/downloaded_file" ]; then
-        echo -e "${GREEN}Réussi - Le fichier a été téléchargé avec succès.${NC}"
+        echo -e "${GREEN}\nTest Réussi - Le fichier a été téléchargé avec succès.${NC}"
     else
         echo -e "${RED}Échec - Le fichier n'a pas été téléchargé.${NC}"
     fi
@@ -120,26 +120,42 @@ test_download() {
     rm -f "/tmp/downloaded_file"
 }
 
-# Fonction pour tester la gestion des cookies
-test_cookies() {
-    local url=$1
-    local cookie_name=$2
-    local test_name=$3
+# Adresse du serveur web à tester sur le port 3500
+SERVER_URL_3500="http://localhost:3500"
 
-    # Envoi de la requête et sauvegarde des cookies dans un fichier
-    curl -c cookies.txt -s "http://localhost:4500/cgi-bin/cookies.py" && cat cookies.txt
+# Adresse du serveur web à tester sur le port 3000
+SERVER_URL_3000="http://localhost:3000"
 
-    # Vérification si le cookie spécifié est présent dans le fichier
-    if grep -q "$cookie_name" cookies.txt; then
-        echo -e "Test: $test_name - Recherche du cookie: $cookie_name - ${GREEN}Réussi${NC}"
+test_persistence() {
+    SERVER_URL=$1
+    PORT=$2
+    COOKIE_FILE="cookies_${PORT}.txt"
+
+    # Envoie une première requête pour initier une session et récupérer le cookie de session
+    curl -c $COOKIE_FILE -i "$SERVER_URL" 2>/dev/null > /dev/null
+    SESSION_COOKIE=$(grep 'sessionId' $COOKIE_FILE | awk '{print $7}')
+
+    # Affichage du résultat de la récupération du cookie
+    if [ -z "$SESSION_COOKIE" ]; then
+        echo -e "${RED}Test échoué : Aucun cookie de session n'a été créé sur le port $PORT.${NC}"
     else
-        echo -e "Test: $test_name - Recherche du cookie: $cookie_name - ${RED}Échec${NC}"
+        echo -e "${GREEN}Test réussi : Cookie de session créé sur le port $PORT.${NC}"
     fi
 
-    # Nettoyage: Suppression du fichier de cookies
-    rm -f cookies.txt
-}
+    # Envoie une deuxième requête avec le cookie de session pour vérifier la persistance de la session
+    curl -b $COOKIE_FILE -c $COOKIE_FILE -i "$SERVER_URL" 2>/dev/null > /dev/null
+    SESSION_COOKIE_SECOND=$(grep 'sessionId' $COOKIE_FILE | awk '{print $7}')
 
+    # Vérification de la persistance du cookie de session
+    if [ "$SESSION_COOKIE" = "$SESSION_COOKIE_SECOND" ]; then
+        echo -e "${GREEN}Test réussi : La session est persistante sur le port $PORT.${NC}"
+    else
+        echo -e "${RED}Test échoué : La session n'est pas persistante sur le port $PORT.${NC}"
+    fi
+
+    # Nettoyage
+    rm $COOKIE_FILE
+}
 
 # Tests du site statique sur le port 3000
 echo -e "${YELLOW}Test du site statique sur le port 3000${NC}"
@@ -178,9 +194,10 @@ test_redirection "${base_url}/pages.html" "${base_url}/proxygirls.html" "Redirec
 echo -e "\n${YELLOW}Test de telechargement de fichier sur le port 3500"${NC}
 test_download "http://localhost:3500/fichiers/FormulaireBasique.pdf" "Téléchargement de FormulaireBasique.pdf"
 
-# Test de la gestion des cookies par le script CGI
-echo -e "\n${YELLOW}Test de la gestion des cookies${NC}"
-test_cookies "http://localhost:4500/cgi-bin/cookies.py" "testCookie" "Gestion des cookies CGI"
+# Exécution des tests de persistance de session pour les ports 3500 et 3000
+echo -e "${YELLOW}\nDébut des tests de persistance de session sur les ports 3500 et 3000${NC}"
+test_persistence $SERVER_URL_3500 3500
+test_persistence $SERVER_URL_3000 3000
 
 # Test de charge avec siege
 echo -e "${YELLOW}\nLancement du test de charge avec siege${NC}"

@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include <sstream>
+#include <cctype>
+#include <algorithm>
 
 #include "Logger.hpp"
 
@@ -17,9 +19,10 @@ public:
     void parse(const std::string& header);
     std::string toString() const;
     std::string getValue(const std::string& name) const;
-    std::string extractCookiesFromRequest(const std::string& requestStr);
+    void extractCookiesFromRequest(const std::string& requestStr);
+    static std::string trim(const std::string& s);
     const std::map<std::string, std::string>& getCookies() const;
-    void setValue(const std::string& name, const std::string& value, bool httpOnly = false, const std::string& path = "/", const std::string& expires = "");
+    void setValue(const std::string& name, const std::string& value, bool httpOnly, const std::string& path, int maxAgeSeconds);
 
 private:
 
