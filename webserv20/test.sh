@@ -163,6 +163,7 @@ perform_test -X GET localhost:3000/proxygirls.html
 perform_test -X POST localhost:3000 -d "data=test"
 perform_test -X POST localhost:3000 -d "@largefile.txt"
 perform_test -X DELETE localhost:3000/delete.txt
+perform_test -X DELETE localhost:3500/delete2.txt
 
 # Tests CGI sur différents ports
 echo -e "\n${YELLOW}Tests CGI sur différents ports${NC}"
