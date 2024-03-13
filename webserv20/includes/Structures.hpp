@@ -6,10 +6,6 @@
 #include <map>
 #include <ctime>
 
-class HttpRequest;
-class HttpResponse;
-class FilePart;
-
 std::string urlDecode(const std::string& str);
 
 struct HttpRequest
