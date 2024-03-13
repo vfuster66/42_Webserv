@@ -548,7 +548,6 @@ HttpResponse RequestHandler::handleCgiRequest(const HttpRequest& request)
     try
     {
         int port = extractPortFromHostHeader(request.headers.find("Host")->second);
-        const ServerConfig& serverConfig = getServerConfigForPort(port);
 
         std::ostringstream portStream;
         portStream << port;
