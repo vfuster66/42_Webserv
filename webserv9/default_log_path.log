@@ -1,9 +1,0 @@
-[32m[2024-02-23 10:55:28][INFO][srcs/ConfigParser.cpp:9] ConfigParser instance created for file: config/serverInit.ini[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:58] parse -> Ligne inattendue en dehors d'un bloc 'server' : port=8080[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:58] parse -> Ligne inattendue en dehors d'un bloc 'server' : host=127.0.0.1[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:58] parse -> Ligne inattendue en dehors d'un bloc 'server' : root=/var/www/html[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:58] parse -> Ligne inattendue en dehors d'un bloc 'server' : error_404=/var/www/html/404.html[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:64] parse -> Aucun bloc 'server' trouvé dans le fichier de configuration.[0m
-[32m[2024-02-23 10:55:28][INFO][srcs/ConfigParser.cpp:74] parse -> Analyse du fichier de configuration terminée.[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:297] ConfigParser::get -> Tentative d'accès à la configuration alors que les serveurs sont vides.[0m
-[33m[2024-02-23 10:55:28][WARNING][srcs/ConfigParser.cpp:297] ConfigParser::get -> Tentative d'accès à la configuration alors que les serveurs sont vides.[0m
