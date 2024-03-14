@@ -1,0 +1,7 @@
+http://127.0.0.1:3000
+http://127.0.0.1:3200
+http://127.0.0.1:3500
+http://127.0.0.1:3800/pages.html/proxygirls.html
+http://127.0.0.1:4100/cgi-bin/cgi.php
+http://127.0.0.1:4200/cgi-bin/cgi.py
+http://127.0.0.1:4500/cgi-bin/cgi.pl

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Session Test</title>
+</head>
+<body>
+    <h1>Session Test Page</h1>
+    <p>Cliquez sur le bouton ci-dessous pour tester la gestion des sessions.</p>
+    <button onclick="testSession()">Test Session</button>
+
+    <script>
+        function testSession() {
+            // Remplacez l'URL par l'adresse de votre serveur et le chemin d'accès approprié
+            fetch('http://localhost:4000', {
+                method: 'GET', // ou 'POST', selon ce que votre serveur attend
+                credentials: 'include' // Important pour inclure les cookies dans la requête
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Réponse du serveur: " + data);
+            })
+            .catch((error) => {
+                console.error('Erreur:', error);
+            });
+        }
+    </script>
+</body>
+</html>
