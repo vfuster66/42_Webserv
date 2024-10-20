@@ -1,7 +1,6 @@
 # 42-Webserv
 
-[![vfuster-'s 42 webserv Score](https://badge42.coday.fr/api/v2/cltpx5zqv531101p4bte37ts1/project/3528755)](https://github.com/Coday-meric/badge42)
-le 13 mars 2024
+✅ Validé à 125% le 13 mars 2024
 
 ## Sources HTTP
 
